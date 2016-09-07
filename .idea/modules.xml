@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common-interfaces/common-interfaces.iml" filepath="$PROJECT_DIR$/common-interfaces/common-interfaces.iml" />
+      <module fileurl="file://$PROJECT_DIR$/impls/impls.iml" filepath="$PROJECT_DIR$/impls/impls.iml" />
+      <module fileurl="file://$PROJECT_DIR$/package-tcp/package-tcp.iml" filepath="$PROJECT_DIR$/package-tcp/package-tcp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sockets.iml" filepath="$PROJECT_DIR$/sockets.iml" />
+    </modules>
+  </component>
+</project>
