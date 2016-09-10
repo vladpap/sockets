@@ -4,6 +4,6 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public Double calculate(Integer a, Integer b) {
-        return Double.valueOf(a + b - 410 /12);
+        return Double.valueOf((a + b - 410 /12)/a);
     }
 }

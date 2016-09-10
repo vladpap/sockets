@@ -4,44 +4,35 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServerRegistrator {
-    private final String host;
     private final Integer port;
     private final Object implementation;
 
-    public ServerRegistrator(String host, Integer port, Object implementation) {
-        this.host = host;
+    public ServerRegistrator(Integer port, Object implementation) {
         this.port = port;
         this.implementation = implementation;
     }
 
-    private void lissen() throws IOException {
-        ServerSocket serverSocket = new ServerSocket(this.port);
-        try (Socket client = serverSocket.accept()) {
-            while (client.isConnected()) {
-                ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
-                PackageToServer toServer = null;
-                try {
-                    toServer = (PackageToServer) ois.readObject();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(toServer.getMethod().getName());
-
+    private void lissen() {
+        try (ServerSocket socket = new ServerSocket(this.port)) {
+            while (true) {
+                new ServerThreads(socket.accept(), implementation).start();
             }
+        } catch (IOException e) {
+            System.err.println("Could not listen on port " + this.port);
+            System.exit(-1);
         }
     }
 
     public static void main(String[] args) {
-        ServerRegistrator registrator = new ServerRegistrator("localhost", 5000, new CalculatorImpl());
-        try {
-            registrator.lissen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ServerRegistrator registrator = new ServerRegistrator(5000, new CalculatorImpl());
+        registrator.lissen();
+
     }
 
 }
