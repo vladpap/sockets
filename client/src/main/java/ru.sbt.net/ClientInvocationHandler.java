@@ -1,5 +1,6 @@
 package ru.sbt.net;
 
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -18,8 +19,8 @@ public class ClientInvocationHandler implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         try(Socket client = new Socket(host, port)) {
             PackageToServer packageToServer = new PackageToServer(method.getName(), args);
-            OutputStream outputStream = client.getOutputStream();
-            outputStream.write(method.getName().getBytes());
+            ObjectOutputStream outputStream = new ObjectOutputStream(client.getOutputStream());
+            outputStream.writeObject(packageToServer);
         }
         return null;
     }

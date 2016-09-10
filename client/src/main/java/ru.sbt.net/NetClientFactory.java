@@ -24,7 +24,7 @@ public class NetClientFactory {
 
 
         Calculator client = factory.createClient(Calculator.class);
-        double calculate = client.calculate(1, 2);
-        System.out.println(calculate);
+        Double calculate = client.calculate(1, 2);
+//        System.out.println(calculate);
     }
 }

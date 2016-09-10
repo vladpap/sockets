@@ -1,27 +1,23 @@
 package ru.sbt.net;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 
 public class PackageToServer implements Serializable {
-    private final String methodName;
+    private final Method method;
     private final Object[] args;
-    private byte[] bytes;
 
-    public PackageToServer(String methodName, Object[] args) {
-        this.methodName = methodName;
+    public PackageToServer(Method method, Object[] args) {
+        this.method = method;
         this.args = args;
     }
 
-    public String getMethodName() {
-        return methodName;
+    public Method getMethod() {
+        return method;
     }
 
     public Object[] getArgs() {
         return args;
     }
 
-    public byte[] getBytes() {
-
-        return methodName.getBytes();
-    }
 }

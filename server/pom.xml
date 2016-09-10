@@ -14,5 +14,17 @@
     <artifactId>server</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>ru.sbt.net</groupId>
+            <artifactId>impls</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.sbt.net</groupId>
+            <artifactId>package-tcp</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     
 </project>
